@@ -10,10 +10,11 @@
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous">
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-C6RzsynM9kWDrMNeT87bh95OGNyZPhcTNXj1NW7RuBCsyN/o0jlpcV8Qyq46cDfL" crossorigin="anonymous"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
-    <script src="../js/clientes.js"></script>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
 
-    <link rel="stylesheet" href="/front_end/css/estilos.css">
+    <link rel="stylesheet" href="/EjercicioAprendizaje/front_end/css/estilos.css">
+    <script src="/EjercicioAprendizaje/front_end/js/ventas.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
   </head>
   <body onload="listarVenta();">
         <!-- star container blanco -->
@@ -78,7 +79,7 @@
             <div class="col-4">
                 <div class="input-group mb-3 ">
                 <input type="text" class="form-control" placeholder="Buscar producto"id="buscar" aria-label="Recipient's username" aria-describedby="button-addon2">
-                <button class="btn btn-outline-success" type="button"  onclick="listarProducto();">Buscar</button>
+                <button class="btn btn-outline-success" type="button"  onclick="listarVenta();">Buscar</button>
                 </div>
             </div>
         </div>
@@ -88,14 +89,15 @@
                 <tr>
 
                     <th scope="col">Código del la venta</th>
-                    <th scope="col">Codigo de el cliente</th>
+                    <th scope="col">cliente</th>
+                    <th scope="col">Descripcion</th>
                     <th scope="col">Total</th>
                     <th scope="col">Estado</th>
                     <th scope="col">Editar </th>
 
                 </tr>
             </thead>
-            <tbody id="curpoTablaCliente">
+            <tbody id="curpoTablaVenta">
                         
             </tbody>
         </table>
@@ -111,11 +113,27 @@
                     <div class="modal-body"  >
                         <div class="row" >
                 
-                    
+                            <div class="col-md-4">
+                                <label for="cliente" class="form-label">Cliente*</label>
+                                <select name="cliente" id="cliente" class="form-select">
+                                  <option selected disabled value="">
+                                    Seleccione el cliente
+                                  </option>
+                                  <option value=""></option>
+                                  <option value=""></option>
+                                </select>
+                              </div>
+
                             <div class="col-6">
                                 <label for="total" class="form-label">Total*</label>
                                 <input type="text" class="form-control"  name="total" id="total" onfocusout="validarNombreApellido(this);">
                             </div>
+
+                            <div class="col-md-4">
+                                <label for="fecha_venta" class="form-label">Fecha de venta*</label>
+                                <input type="datetime-local"class="form-control"name="fecha_venta" id="fecha_venta" step="1"/>
+                              </div>
+                              
                     
                             <div class="col-6">
                                 <label for="estado" class="form-label">Estado</label>

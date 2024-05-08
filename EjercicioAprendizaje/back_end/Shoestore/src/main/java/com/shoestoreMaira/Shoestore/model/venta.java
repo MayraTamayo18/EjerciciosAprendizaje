@@ -17,6 +17,7 @@ public class venta {
 
     @Column(name = "total", nullable = false )
 	private double total;
+    
 
     @Column(name = "estado", nullable = false )
 	private String estado;

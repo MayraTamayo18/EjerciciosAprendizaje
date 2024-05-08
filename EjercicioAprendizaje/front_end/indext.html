@@ -1,0 +1,180 @@
+<!DOCTYPE html>
+<html lang="es">
+  <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <!-- <link rel="stylesheet" href="bootstrap/css/bootstrap.css">
+    <script src="bootstrap/js/bootstrap.js"></script> -->
+    
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous">
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-C6RzsynM9kWDrMNeT87bh95OGNyZPhcTNXj1NW7RuBCsyN/o0jlpcV8Qyq46cDfL" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
+    <script src="../js/clientes.js"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+
+    <link rel="stylesheet" href="/front_end/css/estilos.css">
+  </head>
+  <body>
+    <!-- star container blanco -->
+    <div class="contenedor-blanco"></div>
+    <!-- container blanco end -->
+
+    <!-- barra de navegacion start -->
+    <div class="container-fluid fixed-top">
+      <div class="container topbar bg-primary d-none d-lg-block" >
+        <div class="d-flex justify-content-between">
+          <div class="top-info ps-2" >
+              <small class="me-3"><i class="fas fa-map-marker-alt me-2 text-secondary"></i> <a href="#" class="text-white">123 Street, neiva huila </a></small>
+              <small class="me-3"><i class="fas fa-envelope me-2 text-secondary"></i><a href="#" class="text-white">neiva@Example.com</a></small>
+          </div>
+        </div>
+      </div>
+      <div class="container px-0">
+        <nav class="navbar navbar-light bg-white navbar-expand-xl">
+          <a href="index.html" class="navbar-brand"><h1 class="text display-6" style="font-weight: bold; color: rgb(116, 223, 16);">Fruitis Express</h1></a>
+          <button class="navbar-toggler py-2 px-3" type="button" data-bs-toggle="collapse" data-bs-target="#navbarCollapse">
+            <span class="fa fa-bars text-primary"></span>
+          </button>
+          <div class="collapse navbar-collapse bg-white" id="navbarCollapse">
+            <div class="navbar-nav mx-auto">
+
+              <div class="nav-item dropdown">
+                <a href="#" class="nav-link dropdown-toggle" data-bs-toggle="dropdown">clientes</a>
+                <div class="dropdown-menu bg-light m-0">                                
+                    <a href="clienteRegistro.html" class="dropdown-item">Registro de clientes</a>
+                    <a href="listarClientes.html" class="dropdown-item">Lista de clientes</a>
+                </div>
+              </div>
+              <div class="nav-item dropdown">
+                <a href="#" class="nav-link dropdown-toggle" data-bs-toggle="dropdown">Productos</a>
+                <div class="dropdown-menu bg-light m-0">                                
+                    <a href="productosRegistro.html" class="dropdown-item">Registro de Productos</a>
+                    <a href="listarProducto.html" class="dropdown-item">Lista de Productos</a>
+                </div>
+              </div>
+              <div class="nav-item dropdown">
+                <a href="#" class="nav-link dropdown-toggle" data-bs-toggle="dropdown">ventas</a>
+                <div class="dropdown-menu bg-light m-0">                                
+                    <a href="ventasRegistro.html" class="dropdown-item">Registro de ventas</a>
+                    <a href="listarVentas.html" class="dropdown-item">Lista de ventas</a>
+                </div>
+              </div>
+              <a href="descripcionVentas.html" class="nav-item nav-link">Detalle ventas</a>
+              
+              <a href="contact.html" class="nav-item nav-link">Contact</a>
+            </div>
+            <div class="ms-auto d-none d-lg-flex">
+              <a class="btn btn-sm-square btn-primary ms-2" href=""><i class="fab fa-facebook-f"></i></a>
+              <a class="btn btn-sm-square btn-primary ms-2" href=""><i class="fab fa-twitter"></i></a>
+              <a class="btn btn-sm-square btn-primary ms-2" href=""><i class="fab fa-linkedin-in"></i></a>
+              <a class="btn btn-sm-square btn-primary ms-2" href=""><i class="fab fa-youtube"></i></a>
+            </div>
+          </div>
+        </nav>
+      </div>
+    </div>
+    <div class="container-fluid py-5 mb-5 hero-header" >
+      <div class="container py-5">
+        <div class="row g-5 align-items-center">
+          <div class="col-md-12 col-lg-7">
+              <h1 class="mb-5 display-3 " style="font-weight: bold; color: rgb(250, 250, 250); ">"FruitisExpress"</h1>
+              <h4 class="mb-3 text-white" >"Tus productos favoritos, a los mejores precios con calidad y frescura"</h4>
+              <h1></h1>
+          </div>
+          <div class="col-md-12 col-lg-5">
+            <div id="carouselId" class="carousel slide position-relative" data-bs-ride="carousel">
+              <div class="carousel-inner" role="listbox">
+                <div class="carousel-item active rounded">
+                    <img src="img/imag22.png" class="img-fluid w-100 h-100 bg-secondary rounded" alt="First slide">
+                    <a href="#" class="btn px-4 py-2 text-white rounded">Fruites</a>
+                </div>
+                <div class="carousel-item rounded">
+                    <img src="img/IMAGEN2.png" class="img-fluid w-100 h-100 rounded" alt="Second slide">
+                    <a href="#" class="btn px-4 py-2 text-white rounded">Vesitables</a>
+                </div>
+              </div>
+              <button class="carousel-control-prev" type="button" data-bs-target="#carouselId" data-bs-slide="prev">
+                <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                <span class="visually-hidden">Previous</span>
+              </button>
+              <button class="carousel-control-next" type="button" data-bs-target="#carouselId" data-bs-slide="next">
+                <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                <span class="visually-hidden">Next</span>
+              </button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <!-- fin de la barra de navegacion -->
+
+    <!-- Start sección de características -->
+    <div class="container-fluid featurs py-5 ">
+      <div class="container py-5 " >
+        <div class="row g-4 " >
+          <div class="col-md-6 col-lg-6">
+            <div class="featurs-item text-center rounded bg-light p-4">
+              <div>
+                <i class="fas fa-user-shield fa-5x" style="color: #ffb524; "></i>
+              </div>
+              <div class="featurs-content text-center">
+                <h5>parametros de seguridad</h5>
+                <p class="mb-0">100% seguro</p>
+              </div>
+            </div>
+          </div>
+          <div class="col-md-6 col-lg-6">
+            <div class="featurs-item text-center rounded bg-light p-4">
+              <div>
+                <i class="fa fa-phone-alt fa-5x " style="color: #ffb524;"></i>
+              </div>
+              <div class="featurs-content text-center">
+                <h5> apoyo 24/7</h5>
+                <p class="mb-0">Nuestro Soporte es siempre rápido</p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <!-- Section End de sección de características)-->
+
+    <!-- start container  sobre nosotros -->
+    <div class="container-fluid banner  my-5" style="background-color:  #baee59;" >
+      <div class="container py-5">
+        <div class="row g-4 align-items-center">
+          <div class="col-lg-6">
+            <div class="py-4">
+              <h1 class="display-3 text-white">Nosotros</h1>
+              <p class="fw-normal display-3 text-dark mb-4"></p>
+              <p class="mb-4 text-dark">
+                En nuestra tienda, encontrará una amplia variedad de productos de canasta familiar a precios justos. 
+                Ofrecemos una selección de frutas, verduras, carnes, lácteos, huevos y otros productos básicos. 
+                Todos nuestros productos son frescos y de alta calidad.
+              <br>
+                ¡Visítenos hoy mismo y descubra por qué somos la mejor tienda de la canasta familiar de la ciudad!
+              </p>
+              <a href="#" class="banner-btn btn border-2 border-white rounded-pill text-dark py-3 px-5">d</a>
+            </div>
+            </div>
+            <div class="col-lg-6">
+              <div class="position-relative">
+                  <img src="img/papa.jpg" class="img-fluid w-100 rounded" alt="">
+                <div class="d-flex align-items-center justify-content-center bg-white rounded-circle position-absolute" style="width: 140px; height: 140px; top: 0; left: 0;">
+                  <h1 style="font-size: 100px;"></h1>
+                  <div class="d-flex flex-column">
+                    <span class="h4 mb-0; text-center">Calidad</span>
+                    <span class="h4 text-muted mb-0; text-center" >y</span>
+                    <span class="h4 mb-0; text-center">Frescura</span>
+                  </div>
+                </div>
+             </div>
+            </div> 
+          </div>
+        </div>
+      </div>
+    </div>
+    <!--  container  sobre nosotros end  -->
+  </body>
+</html>

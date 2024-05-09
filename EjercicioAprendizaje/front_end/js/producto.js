@@ -18,6 +18,7 @@ function listarProducto() {
                 let trRegistro = document.createElement("tr");//fila por cada registro de la tabla
                 let celdaId = document.createElement("td");
                 let celdaNombreProducto = document.createElement("td");
+                let celdaDescripcion = document.createElement("td");
                 let celdaCantidad = document.createElement("td");
                 let celdaPrecio = document.createElement("td");
                 let celdaPorcentaje_iva = document.createElement("td");
@@ -29,6 +30,7 @@ function listarProducto() {
                 
                 celdaId.innerText = result[i]["id_producto"];
                 celdaNombreProducto.innerText = result[i]["nombre_producto"];
+                celdaDescripcion.innerText = result[i]["descripcion"];
                 celdaCantidad.innerText = result[i]["cantidad"];
                 celdaPrecio.innerText = result[i]["precio"];
                 celdaPorcentaje_iva.innerText = result[i]["porcentaje_iva"];
@@ -39,6 +41,7 @@ function listarProducto() {
 
                 trRegistro.appendChild(celdaId);
                 trRegistro.appendChild(celdaNombreProducto);
+                trRegistro.appendChild(celdaDescripcion);
                 trRegistro.appendChild(celdaCantidad);
                 trRegistro.appendChild(celdaPrecio);
                 trRegistro.appendChild(celdaPorcentaje_iva);
@@ -55,7 +58,7 @@ function listarProducto() {
                     $('#exampleModal').modal('show');
                     consultarProductoID(this.value); 
                 }
-                botonEditarProducto.className= "btn btn-primary"
+                botonEditarProducto.className= "btn btn-success"
 
                 celdaOpcion.appendChild(botonEditarProducto); 
                 trRegistro.appendChild(celdaOpcion);
@@ -69,7 +72,7 @@ function listarProducto() {
  
                  let productoIdParaDeshabilitar= result[i]["id_producto"]; 
                  botonDeshabilitarProducto.onclick=function(){
-                   deshabilitarproducto(productoIdParaDeshabilitar);
+                   deshabilitarProducto(productoIdParaDeshabilitar);
                  }
                  celdaOpcion.appendChild(botonDeshabilitarProducto); 
                  trRegistro.appendChild(celdaOpcion)
@@ -83,9 +86,10 @@ function listarProducto() {
 }
 
 //Paso para crear el registro de un producto ****
-function registrarproducto() {
+function registrarProducto() {
     
     let nombre_producto = document.getElementById("nombre_producto").value;
+    let descripcion = document.getElementById("descripcion").value;
     let cantidad =document.getElementById("cantidad").value;
     let precio = document.getElementById("precio").value;
     let porcentaje_iva = document.getElementById("porcentaje_iva").value;
@@ -96,6 +100,7 @@ function registrarproducto() {
     let formData = {
         
         "nombre_producto": nombre_producto,
+        "descripcion": descripcion,
         "cantidad": cantidad,
         "precio": precio,
         "porcentaje_iva": porcentaje_iva,
@@ -135,34 +140,15 @@ function registrarproducto() {
 //Paso para que el usuario se registre y llene todos los datos correctamente :D****
 function validarCampos() {
     var nombre_producto = document.getElementById("nombre_producto");
+    let descripcion = document.getElementById("descripcion");
     var cantidad = document.getElementById("cantidad"); 
     var precio = document.getElementById("precio"); 
     var porcentaje_iva = document.getElementById("porcentaje_iva"); 
     var porcentaje_descuento=document.getElementById("porcentaje_descuento"); 
 
-    return validarIdentificacion(nombre_producto) && validarNombreProducto(cantidad) 
+    return validarNombreProducto(nombre_producto) && validarNombreProducto(descripcion) && validarCantidad(cantidad) 
          && validarPrecio(precio) && validarIvaDescuento(porcentaje_iva) && validarIvaDescuento(porcentaje_descuento);
 }
-
-function validarPrecio(cuadroNumero) {
-    if (!cuadroNumero || !cuadroNumero.value) {
-        return false;
-    }
-
-    let valor = cuadroNumero.value;
-    let valido = true;
-    if (valor.length < 0 || valor.length > 9,2) {
-        valido = false;
-    }
-
-    if (valido) {
-        cuadroNumero.className = "form-control is-valid";
-    } else {
-        cuadroNumero.className = "form-control is-invalid";
-    }
-    return valido;
-}
-
 
 function validarNombreProducto(campo){
     var valido=true;
@@ -178,6 +164,75 @@ function validarNombreProducto(campo){
     }
     return valido;
 }
+
+// function validarDescripcion(descripcion){
+//     let valor = descripcion.value;
+//     let valido = true;
+//     if (valor.length <=0 || valor.length >45) {
+//         valido = false
+//     }
+//     if (valido) {
+//       Direccion.className = "form-control is-valid"
+//     }
+//     else{
+//       Direccion.className = "form-control is-invalid"
+//     }
+//     return valido;
+// }
+
+function validarCantidad(Numero) {
+    
+    let valor = Numero.value;
+    let valido = true;
+    if(cantidad.value.length < 0 || cantidad.value.length > 10000){
+        valido=false;
+    }
+
+    if (valido) {
+        Numero.className = "form-control is-valid"
+    }
+    else{
+        Numero.className = "form-control is-invalid"
+    }
+    return valido;
+}
+
+// function validarPrecio(cuadroNumero) {
+//     if (!cuadroNumero || !cuadroNumero.value) {
+//         return false;
+//     }
+
+//     let valor = cuadroNumero.value;
+//     let valido = true;
+//     if (valor.length < 0 || valor.length > 9,2) {
+//         valido = false;
+//     }
+
+//     if (valido) {
+//         cuadroNumero.className = "form-control is-valid";
+//     } else {
+//         cuadroNumero.className = "form-control is-invalid";
+//     }
+//     return valido;
+// }
+
+function validarPrecio(Numero) {
+    
+    let valor = Numero.value;
+    let valido = true;
+    if (valor.length <= 0  ) {
+        valido = false
+    }
+
+    if (valido) {
+        Numero.className = "form-control is-valid"
+    }
+    else{
+        Numero.className = "form-control is-invalid"
+    }
+    return valido;
+}
+
 function validarIvaDescuento(campo){
     var valido=true;
     if(campo.value.length < 2 || campo.value.length > 2){
@@ -193,41 +248,7 @@ function validarIvaDescuento(campo){
     return valido;
 }
 
-function validarPrecio(Numero) {
-    
-    let valor = Numero.value;
-    let valido = true;
-    if (valor.length < 10 || valor.length >13) {
-        valido = false
-    }
-
-    if (valido) {
-        Numero.className = "form-control is-valid"
-    }
-    else{
-        Numero.className = "form-control is-invalid"
-    }
-    return valido;
-}
-
-
-function validarDireccionCiudad(Direccion){
-    let valor = Direccion.value;
-    let valido = true;
-    if (valor.length <=0 || valor.length >45) {
-        valido = false
-    }
-    if (valido) {
-      Direccion.className = "form-control is-valid"
-    }
-    else{
-      Direccion.className = "form-control is-invalid"
-    }
-    return valido;
-}
-
-
-//Cuando le damos click al boton de guardar, este llamara a la function updateMedico por medio del onclick******
+//Cuando le damos click al boton de guardar, este llamara a la function updateProducto por medio del onclick******
 function updateProducto() {
     var id_producto = document.getElementById("id_producto").value;
 
@@ -275,11 +296,11 @@ function updateProducto() {
 
 
 /* metodo para obtener los datos en el modal de actualizar*/ 
-//1.Crear petición que traiga la información del medico por id
-function consultarProductoID(id_producto){
+//1.Crear petición que traiga la información del producto por id
+function consultarProductoID(id){
     //alert(id);
     $.ajax({
-        url:url+id_producto,
+        url:url+id,
         type:"GET",
         success: function(result){
             

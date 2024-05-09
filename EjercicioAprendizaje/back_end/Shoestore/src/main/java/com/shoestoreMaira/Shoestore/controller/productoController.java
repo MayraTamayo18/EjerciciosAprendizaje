@@ -24,23 +24,46 @@ public class productoController {
 	private IproductoService productoService;
 	
 	@PostMapping("/")
-	public ResponseEntity<Object> save(
-			@ModelAttribute("producto") producto producto
-			){
-		productoService.save(producto);
-		return new ResponseEntity<>(producto,HttpStatus.OK);
-	}
+    public ResponseEntity<Object> save(
+        @ModelAttribute("producto") producto producto
+        ){
+
+            if (producto.getNombre_producto().equals("")) {
+                return new ResponseEntity<>("El nombre del producto es obligatorio", HttpStatus.BAD_REQUEST);
+            }
+            if (producto.getDescripcion().equals("")) {
+                return new ResponseEntity<>("La descripción del producto es obligatorio", HttpStatus.BAD_REQUEST);
+            }
+            if (producto.getCantidad()==0) {
+                return new ResponseEntity<>("Porfavor, digite la cantidad que desea", HttpStatus.BAD_REQUEST);
+            }
+            if (producto.getPrecio()==0) {
+                return new ResponseEntity<>("Porfavor, digite el precio del producto", HttpStatus.BAD_REQUEST);
+            }
+            if (producto.getPorcentaje_iva()==0) {
+                return new ResponseEntity<>("El porcentaje del iva es obligatorio", HttpStatus.BAD_REQUEST);
+            }
+            if (producto.getPorcentaje_descuento()==0) {
+                return new ResponseEntity<>("El porcentaje del descuento es obligatorio", HttpStatus.BAD_REQUEST);
+            }
+            if (producto.getEstado().equals("")) {
+                return new ResponseEntity<>("El estado del producto es obligatorio", HttpStatus.BAD_REQUEST);
+            }
+        productoService.save(producto);
+        return new ResponseEntity<>(producto,HttpStatus.OK);
+    }
+
 	@GetMapping("/")
 	public ResponseEntity<Object> findAll(){
-		var Listaproducto=productoService.findAll();
-		return new ResponseEntity<>(Listaproducto, HttpStatus.OK);
+		var ListaProducto=productoService.findAll();
+		return new ResponseEntity<>(ListaProducto, HttpStatus.OK);
 	}
 	
-	// @GetMapping("/busquedafiltro/{filtro}")
-	// public ResponseEntity<Object> findFiltro(@PathVariable String filtro){
-	// 	var Listaproducto=productoService.filtroproducto(filtro);
-	// 	return new ResponseEntity<>(Listaproducto, HttpStatus.OK);
-	// }
+	@GetMapping("/busquedafiltro/{filtro}")
+	public ResponseEntity<Object> findFiltro(@PathVariable String filtro){
+		var ListaProducto=productoService.filtroProducto(filtro);
+		return new ResponseEntity<>(ListaProducto, HttpStatus.OK);
+	}
 	
 	//@PathVariable : Recibe una variable por enlace
 		@GetMapping("/{id_producto}")

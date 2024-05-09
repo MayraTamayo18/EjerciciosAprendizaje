@@ -25,20 +25,20 @@ public class productoService implements IproductoService {
 
 	@Override
 	public List<producto> findAll() {
-		List<producto> Listaproducto=
+		List<producto> ListaProducto=
 				(List<producto>) data.findAll();
 		//(List<producto>) : Es un cast
 		//ya que findAll() retorna un objeto distinto
 		//- Retorna un iterable <producto>
 		//- se convierte a list <producto>
-		return Listaproducto;
+		return ListaProducto;
 	}
 	
-	// @Override
-	// public List<producto> filtroproducto(String filtro) {
-	// 	List<producto>Listaproducto=data.filtroproducto(filtro);
-	// 	return Listaproducto;
-	// }
+	@Override
+	public List<producto> filtroProducto(String filtro) {
+		List<producto>ListaProducto=data.filtroProducto(filtro);
+		return ListaProducto;
+	}
 	
 	
 	@Override

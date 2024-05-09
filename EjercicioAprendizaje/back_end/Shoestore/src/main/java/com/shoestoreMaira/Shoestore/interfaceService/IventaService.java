@@ -11,7 +11,8 @@ import com.shoestoreMaira.Shoestore.model.venta;
 public interface IventaService {
     public String save (venta venta);
 	public List<venta>findAll();
-	// public List<venta> filtroventa(String filtro);
+	// public List<venta> filtroFechas(String filtro);
+    // public List<venta> filtroVenta(String filtro);
 	public Optional<venta> findOne(String id_Venta);
 	public int delete(String id_Venta);
 }

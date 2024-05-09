@@ -24,21 +24,26 @@ public class ventaService implements IventaService{
 
 	@Override
 	public List<venta> findAll() {
-		List<venta> Listaventa=
+		List<venta> ListaVenta=
 				(List<venta>) data.findAll();
 		//(List<venta>) : Es un cast
 		//ya que findAll() retorna un objeto distinto
 		//- Retorna un iterable <venta>
 		//- se convierte a list <venta>
-		return Listaventa;
+		return ListaVenta;
 	}
 	
 	// @Override
-	// public List<venta> filtroventa(String filtro) {
-	// 	List<venta>Listaventa=data.filtroventa(filtro);
-	// 	return Listaventa;
+	// public List<venta> filtroVenta(String filtro) {
+	// 	List<venta>ListaVenta=data.filtroVenta(filtro);
+	// 	return ListaVenta;
 	// }
-	
+	// @Override
+	// public List<venta> filtroFechas(String filtro) {
+	// 	List<venta>ListaVenta=data.filtroFechas(filtro);
+	// 	return ListaVenta;
+	// }
+
 	
 	@Override
 	public Optional<venta> findOne(String id_venta) {

@@ -25,13 +25,13 @@ public class clienteService implements IclienteService{
 
 	@Override
 	public List<cliente> findAll() {
-		List<cliente> Listacliente=
+		List<cliente> ListaCliente=
 				(List<cliente>) data.findAll();
 		//(List<cliente>) : Es un cast
 		//ya que findAll() retorna un objeto distinto
 		//- Retorna un iterable <cliente>
 		//- se convierte a list <cliente>
-		return Listacliente;
+		return ListaCliente;
 	}
 
 	@Override

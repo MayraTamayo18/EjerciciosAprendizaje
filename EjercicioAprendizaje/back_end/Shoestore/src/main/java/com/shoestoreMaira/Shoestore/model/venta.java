@@ -1,5 +1,7 @@
 package com.shoestoreMaira.Shoestore.model;
 
+import java.time.LocalDateTime;
+
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
@@ -23,14 +25,8 @@ public class venta {
 	private String estado;
 
     @Column(name = "fecha_venta", nullable = false )
-	private String fecha_venta;
+	private LocalDateTime fecha_venta;
 
-     public String getFecha_venta() {
-        return fecha_venta;
-    }
-    public void setFecha_venta(String fecha_venta) {
-        this.fecha_venta = fecha_venta;
-    }
     @ManyToOne
 	@JoinColumn(name = "id_cliente")
 	private cliente cliente;
@@ -40,13 +36,14 @@ public class venta {
     public venta() {
         super(); 
     }
-    public venta(String id_venta, double total, String estado, String id_cliente) 
+    public venta(String id_venta, double total, String estado, String id_cliente,LocalDateTime fecha_venta ) 
 	{
 		super();
 		
 		this.id_venta = id_venta;
 		this.total = total;
 		this.estado = estado;
+        this.fecha_venta = fecha_venta;
     }
 
     public String getId_venta() {
@@ -77,6 +74,12 @@ public class venta {
     }
     public void setCliente(cliente cliente) {
         this.cliente = cliente;
+    }
+    public LocalDateTime getFecha_venta() {
+        return fecha_venta;
+    }
+    public void setFecha_venta(LocalDateTime fecha_venta) {
+        this.fecha_venta = fecha_venta;
     }
 
 }

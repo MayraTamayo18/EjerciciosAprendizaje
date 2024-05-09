@@ -64,7 +64,7 @@ function listarCliente() {
                     $('#exampleModal').modal('show');
                     consultarClienteID(this.value); 
                 }
-                botonEditarCliente.className= "btn btn-primary"
+                botonEditarCliente.className= "btn btn-success"
 
                 celdaOpcion.appendChild(botonEditarCliente); 
                 trRegistro.appendChild(celdaOpcion);
@@ -233,10 +233,10 @@ function validarDireccionCiudad(Direccion){
 
 //Cuando le damos click al boton de guardar, este llamara a la function UpdateCliente por medio del onclick******
 function updateCliente() {
-    var id_Cliente = document.getElementById("id_Cliente").value;
+    var id_cliente = document.getElementById("id_cliente").value;
 
     let formData = {
-        "tipo_documento": document.getElementById("tipo_documento").value,
+        "tipo_identificacion": document.getElementById("tipo_identificacion").value,
         "identificacion": document.getElementById("identificacion").value,
         "nombres_cliente": document.getElementById("nombres_cliente").value,
         "apellidos_cliente": document.getElementById("apellidos_cliente").value,
@@ -251,7 +251,7 @@ function updateCliente() {
     //Cuando estamos actualizando los datos, y lo hacemos correctamente Aparecerá la Alerta EXCELENTE *****
     if(validarCampos()){
     $.ajax({
-        url: url + id_Cliente,
+        url: url + id_cliente,
         type: "PUT",
         data: formData,
         success: function(result) {
@@ -282,15 +282,15 @@ function updateCliente() {
 
 /* metodo para obtener los datos en el modal de actualizar*/ 
 //1.Crear petición que traiga la información del cliente por id
-function consultarClienteID(id_Cliente){
+function consultarClienteID(id){
     //alert(id);
     $.ajax({
-        url:url+id_Cliente,
+        url:url+id,
         type:"GET",
         success: function(result){
             
-            document.getElementById("id_Cliente").value=result["id_Cliente"];
-            document.getElementById("tipo_Identificacion").value=result["tipo_Identificacion"];
+            document.getElementById("id_cliente").value=result["id_cliente"];
+            document.getElementById("tipo_identificacion").value=result["tipo_identificacion"];
             document.getElementById("identificacion").value=result["identificacion"];
             document.getElementById("nombres_cliente").value=result["nombres_cliente"];
             document.getElementById("apellidos_cliente").value=result["apellidos_cliente"];
@@ -303,7 +303,7 @@ function consultarClienteID(id_Cliente){
     });
 }
 function limpiar(){
-    // document.getElementById("tipo_Identificacion").value = "";
+
     document.getElementById("identificacion").className="form-control";
     document.getElementById("nombres_cliente").className="form-control";
     document.getElementById("apellidos_cliente").className="form-control";
@@ -324,7 +324,7 @@ function limpiar(){
     document.getElementById("estado").value="";
 }
 // funcion  de deshabilitar cliente
-function deshabilitarCliente(id_Cliente){
+function deshabilitarCliente(id_cliente){
     swal.fire({
       title: '¿Estás seguro?',
       text: "Esta opción no tiene marcha atrás",
@@ -338,7 +338,7 @@ function deshabilitarCliente(id_Cliente){
     }).then((result)=>{
       if (result.isConfirmed){
         $.ajax({
-          url: url +id_Cliente,
+          url: url +id_cliente,
           type: "DELETE",
           success: function(result){
             swal.fire(

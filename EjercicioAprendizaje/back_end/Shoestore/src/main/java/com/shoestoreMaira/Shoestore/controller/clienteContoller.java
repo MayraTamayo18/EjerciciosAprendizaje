@@ -82,8 +82,8 @@ public class clienteContoller {
 	
 	@GetMapping("/busquedafiltro/{filtro}")
 	public ResponseEntity<Object> findFiltro(@PathVariable String filtro){
-		var Listacliente=clienteService.filtroCliente(filtro);
-		return new ResponseEntity<>(Listacliente, HttpStatus.OK);
+		var ListaCliente=clienteService.filtroCliente(filtro);
+		return new ResponseEntity<>(ListaCliente, HttpStatus.OK);
 	}
 	
 	//@PathVariable : Recibe una variable por enlace traer datos
@@ -99,6 +99,8 @@ public class clienteContoller {
 			 clienteService.delete(id_cliente);
 					return new ResponseEntity<>("Registro Eliminado",HttpStatus.OK);
 		}
+
+		
 
 		// @DeleteMapping("/{id_cliente}") //eliminar
 		// public ResponseEntity<Object> delete(@PathVariable String id_cliente){	

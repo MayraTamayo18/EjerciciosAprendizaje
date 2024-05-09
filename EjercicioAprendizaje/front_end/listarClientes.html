@@ -83,9 +83,9 @@
             <thead class="table-light">
                 <tr>
 
-                    <th scope="col">Código del cliente</th>
+                    <th scope="col">Código</th>
+                    <th scope="col">tipo documento</th>
                     <th scope="col">Identificación</th>
-                    <th scope="col">NO° Identificación</th>
                     <th scope="col">Nombres </th>
                     <th scope="col">Apellidos</th>
                     <th scope="col">Telefono</th>
@@ -112,12 +112,16 @@
                     </div>
                     <div class="modal-body"  >
                         <div class="row" >
-                        
+
+                            <div class="col-6">
+                                <label for="id_cliente" class="form-label">id producto*</label>
+                                <input type="text" class="form-control"  name="id_cliente" id="id_cliente">
+                            </div>
+
                             <div class="col-6">
                                 <label for="tipo_identificacion" class="form-label">Tipo identificacion</label>
-                                <select class="form-select" id="tipo_identificacion" focusout="validarTipo_identificacion(this);">
+                                <select class="form-select" id="tipo_identificacion">
                                     <option selected disabled value="">Selecciona una Opcion</option>
-                                    <option value="RC">Registro Civil</option>
                                     <option value="TI">Tarjeta de Identidad</option>
                                     <option value="CC">Cedula de Ciudadanía</option>
                                     <option value="CE">Cedula de Extranjería</option>
@@ -125,18 +129,18 @@
                             </div>
                             <div class="col-6">
                                 <label for="identificacion" class="form-label">Número de Identificación</label>
-                                <input type="number" class="form-control" name="identificacion" id="identificacion"  step="1" onfocusout="validarNumeroDocumento(this);">
+                                <input type="number" class="form-control" name="identificacion" id="identificacion"  step="1" onfocusout="validarIdentificacion(this);">
                                 <input type="hidden" id="id_medico" step="1">
                             </div>
                     
                             <div class="col-6">
                                 <label for="nombres_cliente" class="form-label">Nombres</label>
-                                <input type="text" class="form-control"  name="nombres_cliente" id="nombres_cliente" onfocusout="validarNombreApellido(this);">
+                                <input type="text" class="form-control"  name="nombres_cliente" id="nombres_cliente" onfocusout="validarNombresApellidos(this);">
                             </div>
                     
                             <div class="col-6">
                                 <label for="apellidos_cliente" class="form-label">Apellidos</label>
-                                <input type="text" class="form-control" name="apellidos_cliente" id="apellidos_cliente"  onfocusout="validarNombreApellido(this);">
+                                <input type="text" class="form-control" name="apellidos_cliente" id="apellidos_cliente"  onfocusout="validarNombresApellidos(this);">
                             </div>
                     
                             <div class="col-6">
@@ -146,15 +150,15 @@
                 
                             <div class="col-6">
                                 <label for="direccion" class="form-label">Direccion</label>
-                                <input type="text" class="form-control" name="direccion" id="direccion" onfocusout="validarDireccion(this);" >
+                                <input type="text" class="form-control" name="direccion" id="direccion" onfocusout="validarDireccionCiudad(this);" >
                             </div>
 
                             <div class="col-6">
                                 <label for="ciudad" class="form-label">Ciudad</label>
-                                <input type="text" class="form-control" name="ciudad" id="ciudad"   onfocusout="validarCelular(this);">
+                                <input type="text" class="form-control" name="ciudad" id="ciudad"   onfocusout="validarDireccionCiudad(this);">
                             </div>
 
-                            <div class="col-md-4">
+                            <div class="col-md-6">
                                 <label for="correo_electronico" class="form-label">Correo</label>
                                 <input type="text" class="form-control" name="correo_electronico" id="correo_electronico">
                               </div>
@@ -169,7 +173,7 @@
                             </div>
                         
                             <div class="modal-footer">
-                                <button type="button" class="btn btn-success" onclick="updateCliente();">Guardar</button>
+                                <button type="button" class="btn btn-primary" onclick="updateCliente();">Guardar</button>
 
                                 <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cerrar</button>
                             </div>

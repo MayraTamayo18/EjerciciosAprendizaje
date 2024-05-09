@@ -22,26 +22,41 @@ import com.shoestoreMaira.Shoestore.model.venta;
 @RestController
 @CrossOrigin
 public class ventaController {
-      @Autowired
+	@Autowired
 	private IventaService ventaService;
-	
-	@PostMapping("/")
-	public ResponseEntity<Object> save(
-			@ModelAttribute("venta") venta venta
-			){
+
+    @PostMapping("/")
+   	public ResponseEntity<Object> save(@ModelAttribute("ventas") venta venta){
+			// condicion para cuando ya exista el  registro 
+			//   List<ventas>listaventasValidacion=ventasService.filtroCedulaventas(ventas.getNumero_documento());
+			// if(listaventasValidacion.size()!=0){
+			// 	//ya tiene un registro activo
+			// 	return new ResponseEntity<>("El ventas ya se encuentra registrado",HttpStatus.BAD_REQUEST);		
+			// }	
+			// if (ventas.getTotal().equals("")) {
+			// 	return new ResponseEntity<>("El número de documento es obligatorio", HttpStatus.BAD_REQUEST);
+			// }
+			if (venta.getFecha_venta().equals("")) {
+				return new ResponseEntity<>("la fecha de venta es obligatoria", HttpStatus.BAD_REQUEST);
+			}
+			if (venta.getEstado().equals("")) {
+                return new ResponseEntity<>("El estado del producto es obligatorio", HttpStatus.BAD_REQUEST);
+            }
+			
 		ventaService.save(venta);
-		return new ResponseEntity<>(venta,HttpStatus.OK);
+		return new ResponseEntity<>("Se guardo correctamente",HttpStatus.OK);
 	}
+
 	@GetMapping("/")
 	public ResponseEntity<Object> findAll(){
-		var Listaventa=ventaService.findAll();
-		return new ResponseEntity<>(Listaventa, HttpStatus.OK);
+		var ListaVenta=ventaService.findAll();
+		return new ResponseEntity<>(ListaVenta, HttpStatus.OK);
 	}
 	
 	// @GetMapping("/busquedafiltro/{filtro}")
 	// public ResponseEntity<Object> findFiltro(@PathVariable String filtro){
-	// 	var Listaventa=ventaService.filtroventa(filtro);
-	// 	return new ResponseEntity<>(Listaventa, HttpStatus.OK);
+	// 	var ListaVenta=ventaService.filtroVenta(filtro);
+	// 	return new ResponseEntity<>(ListaVenta, HttpStatus.OK);
 	// }
 	
 	//@PathVariable : Recibe una variable por enlace
